@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Secure Links Template</title>
+
+  <!-- Recommended server-side headers (set these on your web server):
+       Content-Security-Policy: default-src 'self'; object-src 'none';
+       X-Content-Type-Options: nosniff
+       X-Frame-Options: DENY
+       Referrer-Policy: no-referrer-when-downgrade (or no-referrer)
+       Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  -->
+  <style>
+    body { font-family: system-ui, Arial; padding:20px; max-width:900px; margin:auto; }
+    .example { margin:10px 0; }
+    code { background:#f4f4f4; padding:2px 6px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <h1>Secure Links Template</h1>
+
+  <!-- 1) External link opened in new tab: use noopener + noreferrer to prevent tabnabbing + referrer leak -->
+  <div class="example">
+    <strong>External (new tab)</strong><br>
+    <a href="https://trusted-partner.example" target="_blank"
+       rel="noopener noreferrer"
+       title="Opens partner site in a new tab (privacy protected)">
+      Visit Trusted Partner
+    </a>
+  </div>
+
+  <!-- 2) Untrusted / user-generated link: mark nofollow and noreferrer -->
+  <div class="example">
+    <strong>User-submitted / untrusted link</strong><br>
+    <!-- server should sanitize/validate href before rendering -->
+    <a href="https://user-submitted.example" target="_blank"
+       rel="nofollow noopener noreferrer"
+       title="External user link (no SEO credit)">
+      User Link (nofollow)
+    </a>
+  </div>
+
+  <!-- 3) Download link: only for trusted files; show filename for clarity -->
+  <div class="example">
+    <strong>Trusted download</strong><br>
+    <!-- Only provide downloads you control. Server should validate file types & Content-Disposition -->
+    <a href="/downloads/user-guide-v1.2.pdf" download="user-guide-v1.2.pdf"
+       rel="noopener noreferrer"
+       title="Download the user guide (PDF)">
+      Download User Guide (PDF)
+    </a>
+  </div>
+
+  <!-- 4) Action (not navigation) — use a button instead of an anchor -->
+  <div class="example">
+    <strong>Action (use button)</strong><br>
+    <button type="button" id="openMenuBtn" aria-label="Toggle menu">Toggle Menu</button>
+  </div>
+
+  <!-- 5) Safe dynamic link handling example (validate before navigation) -->
+  <div class="example">
+    <strong>Safe dynamic navigation (validated)</strong><br>
+    <input id="dynamicUrl" placeholder="https://example.com" style="width:60%" />
+    <button id="goBtn" type="button">Go</button>
+  </div>
+
+  <script>
+    // FRONTEND: validate dynamic links before using them
+    const allowedProtocolRegex = /^(https?:\/\/)/i; // allow only http(s)
+
+    document.getElementById('goBtn').addEventListener('click', () => {
+      const inp = document.getElementById('dynamicUrl');
+      const url = (inp.value || '').trim();
+      if (!allowedProtocolRegex.test(url)) {
+        alert('Invalid URL: only http(s) links allowed.');
+        return;
+      }
+      // Open validated external link safely (noopener + noreferrer)
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    // Use a safe pattern if you must create anchors dynamically:
+    // - validate href server-side too (always)
+    function createSafeAnchor(href, text, opts = {}) {
+      // minimal client-side guard
+      if (!allowedProtocolRegex.test(href)) throw new Error('Unsafe href');
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = text;
+      // always protect new-tab links
+      a.target = opts.blank ? '_blank' : '_self';
+      const relValues = new Set();
+      if (opts.blank) { relValues.add('noopener'); relValues.add('noreferrer'); }
+      if (opts.untrusted) relValues.add('nofollow');
+      if (relValues.size) a.rel = Array.from(relValues).join(' ');
+      if (opts.title) a.title = opts.title;
+      if (opts.download) a.setAttribute('download', opts.download);
+      return a;
+    }
+
+    // Example: button is used for action; attach handler
+    document.getElementById('openMenuBtn').addEventListener('click', () => {
+      alert('Menu toggled (example action).');
+    });
+  </script>
+</body>
+</html>
