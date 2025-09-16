@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Image Example</title>
+</head>
+<body>
+
+  <!-- Secure image display -->
+  <img 
+    src="https://cdn.example.com/user-images/profile.png"  
+    alt="User profile picture"                             
+    width="200" height="200"                               
+    loading="lazy"                                         
+  >
+
+  <!-- Secure image upload -->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="image">Upload profile image:</label>
+    <input 
+      type="file" 
+      id="image" 
+      name="image" 
+      accept="image/png, image/jpeg"                       
+    >
+    <button type="submit">Upload</button>
+  </form>
+
+</body>
+</html>

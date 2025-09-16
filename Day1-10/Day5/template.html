@@ -1,0 +1,78 @@
+<!--Secured Version-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Table Example</title>
+  <style>
+    table {
+      width: 60%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 8px;
+      text-align: center;
+    }
+    thead {
+      background-color: #eee;
+    }
+    tfoot {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>User Comments</h2>
+  
+  <!-- Secure, structured table -->
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be inserted safely with JS -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">End of Comments</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    // Example user data (could come from API/backend)
+    const users = [
+      { name: "Aditya", comment: "Hello everyone!" },
+      { name: "Riya", comment: "Nice to meet you 😊" },
+      { name: "Hacker", comment: "<script>alert('XSS')</script>" } // malicious input
+    ];
+
+    const tbody = document.querySelector("#userTable tbody");
+
+    users.forEach(user => {
+      const row = document.createElement("tr");
+
+      // Always use textContent to avoid XSS
+      const nameCell = document.createElement("td");
+      nameCell.textContent = user.name;
+
+      const commentCell = document.createElement("td");
+      commentCell.textContent = user.comment;
+
+      row.appendChild(nameCell);
+      row.appendChild(commentCell);
+      tbody.appendChild(row);
+    });
+  </script>
+
+</body>
+</html>
