@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insecure Dynamic Lists</title>
+</head>
+<body>
+
+  <h2>Ordered List (ol)</h2>
+  <ol id="orderedList"></ol>
+
+  <h2>Unordered List (ul)</h2>
+  <ul id="unorderedList"></ul>
+
+  <h2>Description List (dl)</h2>
+  <dl id="descriptionList"></dl>
+
+  <script>
+    // Example user data (includes malicious input)
+    const users = [
+      { name: "Aditya", comment: "Hello everyone!" },
+      { name: "Riya", comment: "Nice to meet you 😊" },
+      { name: "Hacker", comment: "<script>alert('XSS')</script>" } // malicious input
+    ];
+
+    // Ordered list (insecure)
+    const ol = document.getElementById("orderedList");
+    users.forEach(user => {
+      ol.innerHTML += `<li>${user.name}</li>`; // ❌ unsafe
+    });
+
+    // Unordered list (insecure)
+    const ul = document.getElementById("unorderedList");
+    users.forEach(user => {
+      ul.innerHTML += `<li>${user.comment}</li>`; // ❌ unsafe
+    });
+
+    // Description list (insecure)
+    const dl = document.getElementById("descriptionList");
+    users.forEach(user => {
+      dl.innerHTML += `<dt>${user.name}</dt><dd>${user.comment}</dd>`; // ❌ unsafe
+    });
+  </script>
+
+</body>
+</html>
