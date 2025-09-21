@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insecure Form Example</title>
+</head>
+<body>
+    <h2>Insecure User Form</h2>
+
+    <form action="http://example.com/submit" method="get">
+        <!-- Sensitive data in GET request -->
+        
+        <!-- Hidden sensitive data -->
+        <input type="hidden" name="role" value="admin">
+
+        <!-- Username input with no restrictions -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <br><br>
+
+        <!-- Password input with autocomplete enabled -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" autocomplete="on">
+        <br><br>
+
+        <!-- File upload with no restrictions -->
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file">
+        <br><br>
+
+        <!-- Textarea with no limits or sanitization -->
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio"></textarea>
+        <br><br>
+
+        <!-- Select dropdown without placeholder and no server validation -->
+        <label for="role_select">Select Role:</label>
+        <select id="role_select" name="role_select">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

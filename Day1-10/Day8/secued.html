@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Form Template</title>
+</head>
+<body>
+    <h2>Secure User Form</h2>
+
+    <form action="https://example.com/submit" method="post" enctype="multipart/form-data" autocomplete="off">
+        
+        <!-- CSRF Token -->
+        <input type="hidden" name="csrf_token" value="unique_csrf_token_value">
+
+        <!-- Username Input -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" maxlength="20" pattern="[a-zA-Z0-9]+" title="Alphanumeric only" required>
+        <br><br>
+
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="50" required>
+        <br><br>
+
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required autocomplete="off" minlength="8">
+        <br><br>
+
+        <!-- File Upload -->
+        <label for="profile">Upload Profile Picture:</label>
+        <input type="file" id="profile" name="profile" accept="image/png, image/jpeg">
+        <br><br>
+
+        <!-- Textarea -->
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" maxlength="500" placeholder="Tell us about yourself"></textarea>
+        <br><br>
+
+        <!-- Select Dropdown -->
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="">--Select Role--</option>
+            <option value="user">User</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Example of safe client-side rendering (optional)
+        const usernameInput = document.getElementById('username');
+        usernameInput.addEventListener('input', () => {
+            usernameInput.value = usernameInput.value.replace(/[^a-zA-Z0-9]/g, '');
+        });
+    </script>
+</body>
+</html>
