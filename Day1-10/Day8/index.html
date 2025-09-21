@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+    <!-- <form action="post">
+        <label for="a">Username:</label>
+        <input type="text" id="a" name="username" placeholder="Username">        
+    </form> -->
+
+    <!-- <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message here"></textarea> -->
+
+    <!--Example of select tag-->
+    <!-- <label for="cars">Choose a car:</label>
+    <select name="cars" id="cars" multiple>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select> -->
+
+    <!--Bad Practice-->
+    <!-- <form>
+        <label>Upload your file:</label>
+        <input type="file" name="upload"> allows any file, risky -->
+    <!-- </form> -->
+
+    <!--Good Practice-->
+    <!-- <form>
+        <label>Upload your file:</label>
+        <input type="file" name="upload" accept=".jpg, .jpeg, .png, .pdf">
+    </form> -->
+
+    <!--Bad Practice-->
+    <!-- <form action="/submit" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!--Good Practice-->
+    <!-- <form action="/submit" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Please enter a valid email address.">
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!--Hidden Input Example-->
+    <!--Bad Practice Example-->
+    <!-- <form action="/submit" method="post">
+        <input type="hidden" name="role" value="admin">
+        <input type="text" name="username" required>
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!--Good Practice Example-->
+    <!-- <form action="/submit" method="post">
+        <input type="hidden" name="token" value="unique_csrf_token_value">
+        <input type="text" name="username" required>
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!--Bad Practice-->
+    <!-- <label for="password">Confirm Email:</label>
+    <input type="password" id="password" name="password">
+
+    
+    <label for="password">Password:</label> -->
+    <!-- <input type="password" id="password" name="password" required>-->
+
+    <!--Bad Practice-->
+    <!-- <form action="/submit" method="post">
+        <label for="role">Select Role:</label>
+        <select name="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!--Bad Practice-->
+    <!-- <select name="role" required>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+    </select> -->
+
+    <!--Good Practice-->
+    <select name="role" required>
+        <option value="">--Select Role--</option>
+        <option value="user">User</option>
+    </select>
+
+
+
+
+</body>
+
+</html>
