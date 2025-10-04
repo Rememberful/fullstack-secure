@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Semantic HTML Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+    .header, .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+    .navbar {
+      background: #444;
+      color: white;
+      padding: 10px;
+    }
+    .navbar span {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .content {
+      display: flex;
+      margin: 20px 0;
+    }
+    .main {
+      flex: 3;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    .sidebar {
+      flex: 1;
+      padding: 20px;
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>My Website</h1>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navbar">
+      <span>Home</span>
+      <span>About</span>
+      <span>Services</span>
+      <span>Contact</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <div class="main">
+        <h2>Welcome!</h2>
+        <p>This is an example of a page layout built entirely using non-semantic tags like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>.</p>
+        <p><span style="color: blue;">This text uses a span</span> for inline styling.</p>
+      </div>
+
+      <div class="sidebar">
+        <h3>Related Links</h3>
+        <ul>
+          <li><a href="#">HTML Basics</a></li>
+          <li><a href="#">CSS Styling</a></li>
+          <li><a href="#">Web Layout</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2025 My Website | Created using non-semantic tags</p>
+    </div>
+  </div>
+
+</body>
+</html>
