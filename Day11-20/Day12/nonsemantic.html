@@ -1,89 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Non-Semantic HTML Example</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cloud + Hacking + Full-Stack — Dev Portfolio</title>
+
+  <!-- Google Font (fallback to system if offline) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#0b1020; --card:#0f1724; --muted:#9aa4bf; --accent:#00d1ff; --accent-2:#7c5cff;
+      --glass: rgba(255,255,255,0.03);
+      --success: #6ce99a;
+      --danger: #ff6b6b;
+      --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    .container {
-      width: 90%;
-      margin: auto;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ui);
+      color:#e6eef8;
+      background:
+        radial-gradient(600px 300px at 10% 10%, rgba(124,92,255,0.07), transparent 6%),
+        radial-gradient(500px 200px at 90% 80%, rgba(0,209,255,0.04), transparent 6%),
+        linear-gradient(180deg,#061124 0%, #071226 20%, #071226 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
     }
-    .header, .footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
+
+    /* container */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:20px;
     }
-    .navbar {
-      background: #444;
-      color: white;
-      padding: 10px;
+
+    header.topbar{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      justify-content:space-between;
+      padding:14px 18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:12px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
     }
-    .navbar span {
-      margin: 0 10px;
-      cursor: pointer;
+    .brand{
+      display:flex; gap:12px; align-items:center;
     }
-    .content {
-      display: flex;
-      margin: 20px 0;
+    .logo {
+      width:48px; height:48px; border-radius:10px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid; place-items:center; font-weight:700; color:#021024; font-family:var(--mono);
+      box-shadow: 0 6px 20px rgba(124,92,255,0.18), inset 0 -6px 20px rgba(255,255,255,0.06);
     }
-    .main {
-      flex: 3;
-      padding: 20px;
-      background: #f2f2f2;
+    .brand h1{font-size:1.05rem;margin:0}
+    .nav{
+      display:flex; gap:14px; align-items:center;
     }
-    .sidebar {
-      flex: 1;
-      padding: 20px;
-      background: #e0e0e0;
+    .nav a{
+      color:var(--muted); text-decoration:none; font-weight:600; font-size:0.95rem;
+      padding:8px 12px; border-radius:8px;
     }
+    .nav a:hover{color:white; background:rgba(255,255,255,0.02)}
+
+    /* hero grid */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:20px;
+      align-items:stretch;
+    }
+    @media (max-width:980px){ .hero{grid-template-columns:1fr} .hero-right{order:2} }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+      border-radius:14px; padding:20px; box-shadow: 0 10px 40px rgba(2,6,23,0.7);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .intro {
+      padding:28px;
+      display:flex; flex-direction:column; gap:16px;
+      justify-content:center;
+    }
+    .eyebrow{ color:var(--accent); font-weight:700; font-family:var(--mono); font-size:0.8rem; letter-spacing:0.12em}
+    .title{font-size:2rem; margin:0; line-height:1.03}
+    .lead{color:var(--muted); margin:0; max-width:62ch}
+
+    .cta-row{display:flex; gap:12px; margin-top:6px}
+    .btn{
+      border:0; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#021024;
+      box-shadow: 0 8px 24px rgba(124,92,255,0.18);
+    }
+    .btn-ghost{
+      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04);
+    }
+
+    /* right column - cloud + terminal */
+    .hero-right{display:flex; flex-direction:column; gap:14px}
+    .cloud-visual{
+      display:flex; gap:12px; align-items:center; padding:18px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(0,209,255,0.03), rgba(124,92,255,0.02));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .cloud-visual svg{width:78px; height:78px; flex:0 0 78px}
+    .cloud-visual .meta{display:flex; flex-direction:column}
+    .meta b{font-size:1.05rem}
+    .meta small{color:var(--muted)}
+
+    /* terminal */
+    .terminal{
+      background: linear-gradient(180deg, rgba(1,8,18,0.9), rgba(3,12,22,0.95));
+      border-radius:12px; padding:14px; font-family:var(--mono); font-size:0.9rem;
+      color:#bfeefc; position:relative; overflow:hidden; border:1px solid rgba(255,255,255,0.03)
+    }
+    .term-bar{display:flex; gap:8px; align-items:center; padding:6px 8px; opacity:0.95}
+    .dot{width:12px; height:12px; border-radius:50%}
+    .dot.r{background:#ff6b6b}
+    .dot.y{background:#ffd166}
+    .dot.g{background:#6ce99a}
+    .term-body{padding:12px 8px; min-height:120px}
+    .prompt{color:#86e1ff}
+    .cmd{color:#bfeefc}
+    .out{color:var(--muted); font-size:0.88rem}
+    .cursor{display:inline-block;width:8px;height:16px;background:#86e1ff;margin-left:4px;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    /* services / grid */
+    .grid{
+      display:grid; grid-template-columns: repeat(3,1fr); gap:16px;
+    }
+    @media (max-width:980px){ .grid{grid-template-columns: repeat(1,1fr)} }
+    .service{
+      padding:16px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .service h4{margin:0 0 8px 0}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{font-family:var(--mono); background:rgba(255,255,255,0.03); padding:6px 8px; border-radius:8px; font-size:0.82rem; color:var(--muted)}
+
+    /* projects */
+    .projects{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    @media (max-width:1100px){ .projects{grid-template-columns: repeat(2,1fr)} }
+    @media (max-width:700px){ .projects{grid-template-columns: repeat(1,1fr)} }
+    .project{
+      border-radius:12px; padding:16px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .proj-head{display:flex; justify-content:space-between; align-items:center}
+    .stack{font-family:var(--mono); color:var(--muted); font-size:0.82rem}
+
+    footer{margin-top:10px; text-align:center; color:var(--muted); font-size:0.9rem}
+
+    /* small utilities */
+    .row{display:flex; gap:12px; align-items:center}
+    .pill{padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.8rem;}
+    .pill-cloud{background:rgba(0,209,255,0.08); color:var(--accent); border:1px solid rgba(0,209,255,0.06)}
+    .pill-sec{background:rgba(124,92,255,0.06); color:var(--accent-2); border:1px solid rgba(124,92,255,0.06)}
+
+    /* contact */
+    .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width:700px){ .contact-grid{grid-template-columns:1fr} }
+    .input, textarea{width:100%; padding:10px; border-radius:8px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); color:inherit}
+    textarea{min-height:100px}
+    .small{font-size:0.85rem;color:var(--muted)}
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <h1>My Website</h1>
-    </div>
-
-    <!-- Navigation -->
-    <div class="navbar">
-      <span>Home</span>
-      <span>About</span>
-      <span>Services</span>
-      <span>Contact</span>
-    </div>
-
-    <!-- Main Content -->
-    <div class="content">
-      <div class="main">
-        <h2>Welcome!</h2>
-        <p>This is an example of a page layout built entirely using non-semantic tags like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>.</p>
-        <p><span style="color: blue;">This text uses a span</span> for inline styling.</p>
+  <div class="wrap">
+    <header class="topbar card" role="banner">
+      <div class="brand">
+        <div class="logo">CF</div>
+        <div>
+          <h1>Cloud-Forge</h1>
+          <div class="small">Full-Stack & Cloud Security</div>
+        </div>
       </div>
 
-      <div class="sidebar">
-        <h3>Related Links</h3>
-        <ul>
-          <li><a href="#">HTML Basics</a></li>
-          <li><a href="#">CSS Styling</a></li>
-          <li><a href="#">Web Layout</a></li>
-        </ul>
-      </div>
-    </div>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    <!-- Footer -->
-    <div class="footer">
-      <p>&copy; 2025 My Website | Created using non-semantic tags</p>
-    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card intro" id="about">
+        <div class="eyebrow">CLOUD · SECURITY · FULL-STACK</div>
+        <h2 class="title">Building resilient cloud systems — and breaking them (so they stop breaking).</h2>
+        <p class="lead">
+          I'm a full-stack engineer and cloud security practitioner who ships scalable apps by day and runs controlled red-team experiments by night. I design infra-as-code, secure CI/CD pipelines, and hardened runtime environments.
+        </p>
+
+        <div class="cta-row">
+          <button class="btn" onclick="window.location='#projects'">View Projects</button>
+          <button class="btn btn-ghost" onclick="window.location='#contact'">Hire / Collaborate</button>
+          <div style="flex:1"></div>
+          <div class="pill pill-cloud">AWS · GCP · Azure</div>
+          <div class="pill pill-sec">Pentest · CI/CD</div>
+        </div>
+      </div>
+
+      <aside class="card hero-right" aria-label="Interactive panels">
+        <div class="cloud-visual">
+          <!-- simple cloud+server SVG -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00d1ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient>
+            </defs>
+            <rect x="6" y="34" width="52" height="20" rx="3" fill="url(#g1)" opacity="0.12"/>
+            <path d="M18 34a6 6 0 0 1 0-12 9 9 0 0 1 17.6-2.5A7 7 0 0 1 50 26a8 8 0 0 1 0 16H18z" fill="url(#g1)" opacity="0.12"/>
+            <rect x="20" y="38" width="8" height="8" rx="1.4" fill="#86e1ff" opacity="0.16"/>
+            <rect x="36" y="38" width="8" height="8" rx="1.4" fill="#7c5cff" opacity="0.16"/>
+          </svg>
+
+          <div class="meta">
+            <b>Cloud Lab</b>
+            <small>Staging infra • IaC • Canary testing</small>
+            <div style="height:8px"></div>
+            <div class="small">Last deploy: <strong style="color:var(--success)">OK</strong> • 3 services</div>
+          </div>
+        </div>
+
+        <div class="terminal" role="region" aria-label="Live terminal example">
+          <div class="term-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div style="flex:1"></div>
+            <div class="small">local · dev</div>
+          </div>
+          <div class="term-body">
+            <div><span class="prompt">➜</span> <span class="cmd">ssh dev@cloudforge</span></div>
+            <div id="typed" style="margin-top:8px"></div>
+            <div class="out" style="margin-top:10px">npm run deploy && terraform apply -auto-approve</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:12px;">
+          <div class="card" style="flex:1; padding:10px">
+            <div class="small">Status</div>
+            <div style="font-weight:700; margin-top:6px">All systems nominal</div>
+            <div class="small" style="margin-top:6px; color:var(--muted)">No critical alerts in last 24h</div>
+          </div>
+          <div class="card" style="flex:1; padding:10px">
+            <div class="small">Tools</div>
+            <div style="font-weight:700; margin-top:6px">Docker · k8s · GitHub Actions</div>
+            <div class="small" style="margin-top:6px">Burp · Metasploit · Trivy</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="card" id="services" aria-labelledby="services-h">
+      <h3 id="services-h" style="margin:0 0 12px 0">Services</h3>
+      <div class="grid">
+        <article class="service">
+          <h4>Cloud Engineering</h4>
+          <p class="small">Design and operate resilient infra using IaC, observability and autoscaling.</p>
+          <div style="height:10px"></div>
+          <div class="tags">
+            <span class="tag">Terraform</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Infra as Code</span>
+          </div>
+        </article>
+
+        <article class="service">
+          <h4>Application Development</h4>
+          <p class="small">End-to-end applications with secure APIs and modern frontends.</p>
+          <div style="height:10px"></div>
+          <div class="tags">
+            <span class="tag">Node / Go</span>
+            <span class="tag">React / Next.js</span>
+            <span class="tag">Postgres</span>
+          </div>
+        </article>
+
+        <article class="service">
+          <h4>Security & Red Team</h4>
+          <p class="small">Threat modeling, pentesting, container & supply chain hardening.</p>
+          <div style="height:10px"></div>
+          <div class="tags">
+            <span class="tag">CSP / SAST</span>
+            <span class="tag">Burp</span>
+            <span class="tag">CI/CD Scans</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h3 style="margin:0 0 12px 0">Selected Projects</h3>
+      <div class="projects">
+        <div class="project card">
+          <div class="proj-head">
+            <div>
+              <strong>Cloud Canary</strong>
+              <div class="small">Auto-heal monitoring & canary deploy</div>
+            </div>
+            <div class="stack">AWS · Lambda · Terraform</div>
+          </div>
+          <div style="height:10px"></div>
+          <p class="small">Automated canary rollout system with circuit breakers and automatic rollback on anomalies.</p>
+        </div>
+
+        <div class="project card">
+          <div class="proj-head">
+            <div>
+              <strong>VulnAudit</strong>
+              <div class="small">Container scanning & supply chain checks</div>
+            </div>
+            <div class="stack">K8s · Trivy · GitHub Actions</div>
+          </div>
+          <div style="height:10px"></div>
+          <p class="small">CI pipeline integration to fail PRs on critical findings and produce audit artifacts.</p>
+        </div>
+
+        <div class="project card">
+          <div class="proj-head">
+            <div>
+              <strong>AppForge</strong>
+              <div class="small">Full-stack SaaS boilerplate</div>
+            </div>
+            <div class="stack">Next.js · Node · Postgres</div>
+          </div>
+          <div style="height:10px"></div>
+          <p class="small">Secure auth, RBAC, multi-tenant patterns and infra templates to spin services quickly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact" aria-labelledby="contact-h">
+      <h3 id="contact-h" style="margin:0 0 10px 0">Get in touch</h3>
+      <div class="contact-grid">
+        <div>
+          <div class="small">Let's collaborate on secure cloud systems, audits or full-stack builds.</div>
+          <div style="height:12px"></div>
+          <div><strong>Email:</strong> <a href="mailto:hello@cloudforge.dev" style="color:var(--accent)">hello@cloudforge.dev</a></div>
+          <div style="height:8px"></div>
+          <div><strong>GitHub:</strong> <a href="#" style="color:var(--accent)">github.com/cloudforge</a></div>
+          <div style="height:12px"></div>
+          <div class="small">Prefer a short brief? Send a short one-liner describing the project and budget.</div>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Thanks! I will reply soon.');">
+          <input class="input" type="text" placeholder="Your name" required />
+          <div style="height:8px"></div>
+          <input class="input" type="email" placeholder="Email" required />
+          <div style="height:8px"></div>
+          <textarea placeholder="Short message — idea, scope, timeline"></textarea>
+          <div style="height:10px"></div>
+          <div style="display:flex; gap:8px; align-items:center">
+            <button class="btn" type="submit">Send</button>
+            <button class="btn btn-ghost" type="button" onclick="window.open('https://github.com','_blank')">View GitHub</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="yr"></span> Cloud-Forge • Built for cloud, hardened for security</div>
+    </footer>
   </div>
 
+  <script>
+    // small date
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // typed terminal effect (simple)
+    const lines = [
+      '<span class="prompt">➜</span> <span class="cmd">git clone git@github.com:cloudforge/appforge.git</span>',
+      '<span class="prompt">➜</span> <span class="cmd">cd appforge && npm ci</span>',
+      '<span class="prompt">➜</span> <span class="cmd">npm run test && npm run build</span>',
+    ];
+    const container = document.getElementById('typed');
+    let i=0, ch=0, line=0;
+    function type(){
+      if(line >= lines.length) return;
+      const txt = lines[line];
+      container.innerHTML = txt.slice(0,ch) + '<span class="cursor"></span>';
+      ch++;
+      if(ch > txt.length){
+        line++; ch=0;
+        setTimeout(type, 900);
+      } else setTimeout(type, 28 + Math.random()*40);
+    }
+    type();
+  </script>
 </body>
 </html>
