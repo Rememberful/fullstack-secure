@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Selectors Demo</title>
+  <style>
+    /* 🌐 UNIVERSAL SELECTOR */
+    * {
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    /* 🧩 ELEMENT SELECTOR */
+    h1 {
+      color: #0078ff;
+      text-align: center;
+    }
+
+    p {
+      color: #333;
+    }
+
+    /* 🎯 CLASS SELECTOR */
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    /* 🆔 ID SELECTOR */
+    #special {
+      color: crimson;
+      font-size: 20px;
+    }
+
+    /* 🔗 GROUP SELECTOR */
+    h2, h3 {
+      color: #008b8b;
+    }
+
+    /* 🧱 DESCENDANT SELECTOR */
+    div p {
+      color: purple;
+    }
+
+    /* 👩‍👧 CHILD SELECTOR */
+    div > span {
+      color: darkorange;
+    }
+
+    /* ⚙️ ATTRIBUTE SELECTOR */
+    input[type="text"] {
+      border: 2px solid #0077ff;
+      padding: 5px;
+    }
+
+    input[placeholder] {
+      background-color: #e0f7ff;
+    }
+
+    /* 🧭 PSEUDO-CLASS SELECTORS */
+    a:hover {
+      color: green;
+    }
+
+    li:first-child {
+      color: blue;
+    }
+
+    li:last-child {
+      color: red;
+    }
+
+    li:nth-child(2) {
+      color: orange;
+    }
+
+    /* 💫 PSEUDO-ELEMENT SELECTORS */
+    p::first-letter {
+      font-size: 200%;
+      color: teal;
+    }
+
+    p::after {
+      content: " ✨";
+    }
+
+    /* 🌍 UNIVERSAL BACKGROUND */
+    body {
+      background: #f5faff;
+      margin: 30px;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Selectors Showcase</h1>
+  <hr>
+
+  <h2>Basic Selectors</h2>
+  <p>This is a normal paragraph styled with <code>p</code> selector.</p>
+  <p class="highlight">This paragraph uses a class selector (<code>.highlight</code>).</p>
+  <p id="special">This one uses an ID selector (<code>#special</code>).</p>
+
+  <hr>
+  <h2>Group, Descendant & Child</h2>
+  <div>
+    <p>Paragraph inside a div — styled using <code>div p</code>.</p>
+    <span>Span directly inside a div — styled using <code>div > span</code>.</span>
+  </div>
+
+  <hr>
+  <h2>Attribute Selectors</h2>
+  <input type="text" placeholder="Type something...">
+  <input type="password" placeholder="Password field (not styled)">
+  
+  <hr>
+  <h2>Pseudo Classes & Elements</h2>
+  <a href="#">Hover over this link</a>
+
+  <ul>
+    <li>First item (first-child)</li>
+    <li>Second item (nth-child)</li>
+    <li>Last item (last-child)</li>
+  </ul>
+
+  <p>Every paragraph ends with a ✨ thanks to <code>::after</code>.</p>
+
+</body>
+</html>
