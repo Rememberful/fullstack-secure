@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Color Representation Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .color-box {
+      padding: 15px;
+      margin: 10px 0;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    /* 🎨 Named Color */
+    .named { background-color: tomato; }
+
+    /* 💠 HEX Color */
+    .hex { background-color: #1e90ff; } /* DodgerBlue */
+
+    /* 🔢 RGB */
+    .rgb { background-color: rgb(0, 200, 83); } /* Green */
+
+    /* 🌫️ RGBA */
+    .rgba { background-color: rgba(255, 99, 71, 0.6); color: black; }
+
+    /* 🌈 HSL */
+    .hsl { background-color: hsl(300, 70%, 50%); } /* Purple */
+
+    /* 💎 HSLA */
+    .hsla { background-color: hsla(200, 100%, 40%, 0.5); color: black; }
+
+    /* 🧠 color() function (modern CSS) */
+    .color-func { background-color: color(srgb 0 0.7 1); } /* Light Blue */
+  </style>
+</head>
+<body>
+  <h1>🎨 CSS Color Representation Examples</h1>
+
+  <div class="color-box named">Named Color → tomato</div>
+  <div class="color-box hex">HEX Color → #1e90ff</div>
+  <div class="color-box rgb">RGB Color → rgb(0, 200, 83)</div>
+  <div class="color-box rgba">RGBA Color → rgba(255, 99, 71, 0.6)</div>
+  <div class="color-box hsl">HSL Color → hsl(300, 70%, 50%)</div>
+  <div class="color-box hsla">HSLA Color → hsla(200, 100%, 40%, 0.5)</div>
+  <div class="color-box color-func">color() Function → color(srgb 0 0.7 1)</div>
+</body>
+</html>
