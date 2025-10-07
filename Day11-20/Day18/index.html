@@ -1,0 +1,104 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            color: aqua;
+        }
+        .yellow{
+            color: yellow;
+        }
+        .purple{
+            color: purple;
+        }
+        .cred{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="yellow cred purple"> Aditya is a boy</div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Specificity Example</title> -->
+<!-- <style> -->
+  <!-- /* 1️⃣ Element selector → specificity = 1 */ -->
+  <!-- p {
+    color: blue;
+  } -->
+
+  <!-- /* 2️⃣ Class selector → specificity = 10 */
+  .highlight {
+    color: green;
+  }
+
+  /* 3️⃣ ID selector → specificity = 100 */
+  #special {
+    color: red;
+  }
+
+  /* 4️⃣ Inline style → specificity = 1000 */ -->
+<!-- </style>
+</head>
+<body>
+
+  <p>This is a normal paragraph (blue).</p>
+
+  <p class="highlight">This paragraph has a class (green).</p>
+
+  <p id="special" class="highlight">This one has both class and ID (red wins).</p>
+
+  <p id="special2" class="highlight" style="color: orange;">
+    This one has inline style (orange wins).
+  </p>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>!important Example</title>
+<style>
+  /* 1️⃣ Element selector */
+  p {
+    color: blue;
+  }
+  /* 2️⃣ Class selector */
+  .note {
+    color: green;
+  }
+  /* 3️⃣ ID selector */
+  #urgent {
+    color: red;
+  }
+  /* 4️⃣ Override everything using !important */
+  .force {
+    color: purple !important;
+  }
+</style>
+</head>
+<body>
+
+  <p>This is a normal paragraph (blue).</p>
+
+  <p class="note">This has a class (green).</p>
+
+  <p id="urgent" class="note">This has ID and class (red wins normally).</p>
+
+  <p id="urgent" class="note force">
+    This has ID + class + !important (purple wins!).
+  </p>
+</body>
+</html>

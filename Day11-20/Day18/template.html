@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Cascade – Complete Example</title>
+
+<style>
+  /* 🔹 Base Styles */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 40px;
+  }
+
+  h1 {
+    color: #58a6ff;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    background: #161b22;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #30363d;
+  }
+
+  .card h2 {
+    color: #ffa657;
+    margin-bottom: 10px;
+  }
+
+  .example {
+    padding: 10px;
+    border-radius: 6px;
+    margin: 5px 0;
+    font-weight: 600;
+  }
+
+  /* 🧱 1️⃣ Specificity Example */
+  p {
+    color: lightblue;
+  }
+
+  .text {
+    color: lime;
+  }
+
+  #unique {
+    color: orange;
+  }
+
+  /* 🧱 2️⃣ Source Order Example (last wins if same specificity) */
+  .order {
+    color: cyan;
+  }
+
+  .order {
+    color: pink; /* Last one overrides previous */
+  }
+
+  /* 🧱 3️⃣ !important Example */
+  .normal {
+    color: yellow;
+  }
+
+  .override {
+    color: red !important;
+  }
+
+  /* Styling example boxes */
+  .example-box {
+    border: 1px solid #30363d;
+    background: #1c2128;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 CSS Cascade Demonstration</h1>
+
+<div class="card">
+  <h2>1️⃣ Specificity Example</h2>
+  <p>Element Selector → <code>p</code></p>
+  <p class="text">Class Selector → <code>.text</code></p>
+  <p id="unique" class="text">ID Selector → <code>#unique</code> wins!</p>
+
+  <div class="example-box">
+    ✅ Order of power: Inline (1000) → ID (100) → Class (10) → Element (1)
+  </div>
+</div>
+
+<div class="card">
+  <h2>2️⃣ Source Order Example</h2>
+  <p class="order">Both selectors are <code>.order</code>, but last one wins → pink</p>
+
+  <div class="example-box">
+    ✅ When specificity is same, the rule written **later** overrides earlier ones.
+  </div>
+</div>
+
+<div class="card">
+  <h2>3️⃣ !important Example</h2>
+  <p class="normal">Normal class → yellow</p>
+  <p class="normal override">Class with <code>!important</code> → red wins!</p>
+
+  <div class="example-box">
+    ✅ <code>!important</code> overrides all other declarations.
+  </div>
+</div>
+
+</body>
+</html>
