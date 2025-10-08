@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS List Styling Demo</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f9fb;
+    padding: 40px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  h2 {
+    color: #00509e;
+    margin-top: 40px;
+  }
+
+  ul, ol {
+    margin: 20px;
+    padding-left: 40px;
+  }
+
+  /* 1️⃣ Basic custom bullet type */
+  .square-list {
+    list-style-type: square;
+    color: #333;
+  }
+
+  /* 2️⃣ Circle bullets */
+  .circle-list {
+    list-style-type: circle;
+  }
+
+  /* 3️⃣ Numbered list */
+  .numbered-list {
+    list-style-type: decimal-leading-zero;
+  }
+
+  /* 4️⃣ Custom image as bullet */
+  .image-list {
+    list-style-image: url('https://cdn-icons-png.flaticon.com/512/32/32178.png');
+  }
+
+  /* 5️⃣ Inside bullet position */
+  .inside-list {
+    list-style-position: inside;
+    background: #e0f7ff;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  /* 6️⃣ Removing bullets (for nav or menus) */
+  .no-style {
+    list-style: none;
+    padding: 0;
+  }
+
+  .no-style li {
+    background: #008cff;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+
+  .no-style li:hover {
+    background: #00509e;
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 CSS List Styling Examples</h1>
+
+<h2>1️⃣ Square Bullets</h2>
+<ul class="square-list">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Cherry</li>
+</ul>
+
+<h2>2️⃣ Circle Bullets</h2>
+<ul class="circle-list">
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
+
+<h2>3️⃣ Numbered List (Decimal Leading Zero)</h2>
+<ol class="numbered-list">
+  <li>Step One</li>
+  <li>Step Two</li>
+  <li>Step Three</li>
+</ol>
+
+<h2>4️⃣ Image Bullets</h2>
+<ul class="image-list">
+  <li>Cloud Computing</li>
+  <li>Networking</li>
+  <li>Cybersecurity</li>
+</ul>
+
+<h2>5️⃣ Inside Bullet Position</h2>
+<ul class="inside-list">
+  <li>Bullet appears inside text block</li>
+  <li>Looks neat in cards or colored boxes</li>
+</ul>
+
+<h2>6️⃣ No Bullets (for Menus)</h2>
+<ul class="no-style">
+  <li>Home</li>
+  <li>About</li>
+  <li>Contact</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Shadows Demo</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #f3f4f6;
+    padding: 40px;
+    text-align: center;
+  }
+
+  h1 {
+    color: #222;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  h2 {
+    color: #00509e;
+    margin-top: 40px;
+  }
+
+  .demo {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .card {
+    width: 200px;
+    height: 120px;
+    background: white;
+    border-radius: 10px;
+    line-height: 120px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+
+  /* 1️⃣ Simple shadow */
+  .shadow-basic {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 2️⃣ Soft glow */
+  .shadow-soft {
+    box-shadow: 0 0 20px rgba(0, 128, 255, 0.4);
+  }
+
+  /* 3️⃣ Multi-layer shadow */
+  .shadow-multi {
+    box-shadow: 
+      0 2px 5px rgba(0, 0, 0, 0.2),
+      0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hover effect to enhance depth */
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* 4️⃣ Text shadow glow */
+  .text-glow {
+    font-size: 36px;
+    color: #fff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #0088ff;
+    background: #000;
+    padding: 20px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>🎨 CSS Shadows Examples</h1>
+
+<h2>1️⃣ Box Shadows</h2>
+<div class="demo">
+  <div class="card shadow-basic">Basic</div>
+  <div class="card shadow-soft">Soft Glow</div>
+  <div class="card shadow-multi">Multi Shadow</div>
+</div>
+
+<h2>2️⃣ Text Shadows</h2>
+<div class="demo">
+  <div class="text-glow">Glowing Text</div>
+</div>
+
+</body>
+</html>

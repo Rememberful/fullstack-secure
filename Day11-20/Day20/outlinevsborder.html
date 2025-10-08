@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Border vs Outline Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 40px;
+  }
+
+  .container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .box {
+    width: 150px;
+    height: 100px;
+    background: white;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+  }
+
+  /* Box with border */
+  .border-box {
+    border: 5px solid #008cff;
+  }
+
+  /* Box with outline */
+  .outline-box {
+    border: 5px solid transparent;
+    outline: 5px solid #ff0077;
+    outline-offset: 5px; /* Creates a gap between border and outline */
+  }
+
+  p {
+    text-align: center;
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">🎯 Border vs Outline</h1>
+
+<div class="container">
+  <div class="box border-box">Border</div>
+  <div class="box outline-box">Outline</div>
+</div>
+
+<p>👉 <strong>Border</strong> is inside the element’s box and affects layout.<br>
+👉 <strong>Outline</strong> is drawn outside the border and doesn’t affect layout.</p>
+
+</body>
+</html>
