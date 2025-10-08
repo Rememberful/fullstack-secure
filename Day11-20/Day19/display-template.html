@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Display Property Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  h2 {
+    color: #00509e;
+    margin-top: 40px;
+  }
+
+  .demo {
+    border: 2px dashed #ccc;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: white;
+  }
+
+  .box {
+    background: #008cff;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  /* 1️⃣ Block */
+  .block .box {
+    display: block;
+  }
+
+  /* 2️⃣ Inline */
+  .inline .box {
+    display: inline;
+  }
+
+  /* 3️⃣ Inline-Block */
+  .inline-block .box {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+  }
+
+  /* 4️⃣ None */
+  .none .hidden {
+    display: none;
+  }
+
+  /* 5️⃣ Flex */
+  .flex {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* 6️⃣ Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 CSS Display Property Examples</h1>
+
+<h2>1️⃣ display: block</h2>
+<div class="demo block">
+  <div class="box">Block 1</div>
+  <div class="box">Block 2</div>
+  <div class="box">Block 3</div>
+  <p>👉 Each box starts on a new line and takes full width.</p>
+</div>
+
+<h2>2️⃣ display: inline</h2>
+<div class="demo inline">
+  <div class="box">Inline 1</div>
+  <div class="box">Inline 2</div>
+  <div class="box">Inline 3</div>
+  <p>👉 All boxes appear in the same line (no width/height control).</p>
+</div>
+
+<h2>3️⃣ display: inline-block</h2>
+<div class="demo inline-block">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+  <p>👉 Inline layout but supports width and height.</p>
+</div>
+
+<h2>4️⃣ display: none</h2>
+<div class="demo none">
+  <div class="box hidden">Hidden Box</div>
+  <div class="box">Visible Box</div>
+  <p>👉 The first box is hidden completely (no space reserved).</p>
+</div>
+
+<h2>5️⃣ display: flex</h2>
+<div class="demo flex">
+  <div class="box">A</div>
+  <div class="box">B</div>
+  <div class="box">C</div>
+</div>
+<p>👉 Boxes arranged side by side in a flexible row.</p>
+
+<h2>6️⃣ display: grid</h2>
+<div class="demo grid">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+<p>👉 Boxes arranged in a 3-column grid layout.</p>
+
+</body>
+</html>
