@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overflow, Text-Overflow, White-Space Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 40px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .container {
+    width: 300px;
+    height: 50px;
+    background: #fff;
+    border: 2px solid #333;
+    margin-bottom: 30px;
+    padding: 10px;
+    line-height: 30px;
+    overflow: hidden;
+  }
+
+  /* 1️⃣ Overflow Example */
+  .overflow-visible {
+    overflow: visible;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .overflow-scroll {
+    overflow: scroll;
+  }
+
+  /* 2️⃣ Text Overflow with Ellipsis */
+  .text-ellipsis {
+    white-space: nowrap;      /* No wrapping */
+    overflow: hidden;         /* Hide extra */
+    text-overflow: ellipsis;  /* Show "..." */
+  }
+
+  /* 3️⃣ White-space Examples */
+  .white-normal {
+    white-space: normal; /* Text wraps normally */
+  }
+
+  .white-nowrap {
+    white-space: nowrap; /* Text stays in one line */
+  }
+
+  .white-pre {
+    white-space: pre; /* Preserves spaces and line breaks */
+  }
+</style>
+</head>
+<body>
+
+<h1>🎯 Overflow, Text-Overflow & White-Space Demo</h1>
+
+<h2>1️⃣ Overflow Examples</h2>
+<div class="container overflow-visible">
+  Overflow Visible: This content will spill outside the box.
+</div>
+
+<div class="container overflow-hidden">
+  Overflow Hidden: This content is clipped and you cannot see the rest.
+</div>
+
+<div class="container overflow-scroll">
+  Overflow Scroll: This content is too long and scrollbars appear.
+</div>
+
+<h2>2️⃣ Text Overflow with Ellipsis</h2>
+<div class="container text-ellipsis">
+  Text Overflow Example: This very long text will show "..." at the end.
+</div>
+
+<h2>3️⃣ White-Space Examples</h2>
+<div class="container white-normal">
+  White-Space Normal: This text wraps naturally inside the box.
+</div>
+
+<div class="container white-nowrap">
+  White-Space NoWrap: This text stays on one line and may overflow.
+</div>
+
+<div class="container white-pre">
+  White-Space Pre:
+  This    preserves
+  all spaces and line
+  breaks.
+</div>
+
+</body>
+</html>

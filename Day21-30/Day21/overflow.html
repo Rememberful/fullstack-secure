@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Overflow Demo</title>
+<style>
+  .container {
+    width: 200px;
+    height: 100px;
+    background: #f0f0f0;
+    border: 2px solid #333;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .visible { overflow: visible; }
+  .hidden { overflow: hidden; }
+  .scroll { overflow: scroll; }
+  .auto { overflow: auto; }
+</style>
+</head>
+<body>
+
+<h1>🎨 CSS Overflow Examples</h1>
+
+<div class="container visible">
+  <p>Visible Overflow: This content is too long for the box and will spill outside. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit tenetur dolorum id nesciunt! Dolore veniam sequi dolorem non neque ipsam quis reiciendis officiis quia?</p>
+</div>
+
+<div class="container hidden">
+  <p>Hidden Overflow: This content  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum nihil, possimus suscipit repellat rem dicta dolorem inventore laborum vel nam enim necessitatibus quis molestiae?is clipped and you cannot see the rest.</p>
+</div>
+
+<div class="container scroll">
+  <p>Scroll Overflow: Scrollbars are Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, placeat aspernatur ad iure doloribus iste nulla cum, eos omnis ab ratione nemo doloremque animi? always visible to see the full content.</p>
+</div>
+
+<div class="container auto">
+  <p>Auto Overflow: Scrollbars appear  Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus nulla cupiditate laudantium itaque ratione corporis nihil tenetur enim deserunt, dolorum consequuntur sed ad dolor. only if content is larger than the container.</p>
+</div>
+
+</body>
+</html>
