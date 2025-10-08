@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Position Property Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    height: 1500px; /* To allow scrolling */
+  }
+
+  .container {
+    border: 2px solid gray;
+    margin-bottom: 40px;
+    height: 200px;
+    position: relative;
+    padding: 10px;
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+  }
+
+  /* 1️⃣ Static (default) */
+  .static {
+    background: steelblue;
+    position: static;
+  }
+
+  /* 2️⃣ Relative */
+  .relative {
+    background: seagreen;
+    position: relative;
+    top: 20px;
+    left: 20px;
+  }
+
+  /* 3️⃣ Absolute */
+  .absolute {
+    background: tomato;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  /* 4️⃣ Fixed */
+  .fixed {
+    background: purple;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  /* 5️⃣ Sticky */
+  .sticky {
+    background: orange;
+    position: sticky;
+    top: 0;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🧭 CSS Position Property — Simple Demo</h1>
+
+<h2>1️⃣ Static (default)</h2>
+<div class="container">
+  <div class="box static">Static</div>
+</div>
+
+<h2>2️⃣ Relative</h2>
+<div class="container">
+  <div class="box relative">Relative</div>
+</div>
+
+<h2>3️⃣ Absolute</h2>
+<div class="container">
+  <div class="box absolute">Absolute</div>
+  <p>This red box is positioned absolutely inside this container.</p>
+</div>
+
+<h2>4️⃣ Sticky</h2>
+<div class="container">
+  <div class="box sticky">Sticky</div>
+  <p>Scroll down — the orange box will stick to the top when it reaches it.</p>
+</div>
+
+<div class="box fixed">Fixed</div>
+<p>Keep scrolling — the purple “Fixed” box stays in the same spot on the screen.</p>
+
+</body>
+</html>
