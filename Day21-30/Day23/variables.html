@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Variables – Complete Basic Template</title>
+  <style>
+    /* 🌍 1️⃣ Global variables defined in :root (available everywhere) */
+    :root {
+      --main-color: #007bff;
+      --secondary-color: #ff6600;
+      --bg-color: #f0f8ff;
+      --font-size: 18px;
+      --padding: 10px;
+    }
+
+    /* 2️⃣ Using global variables */
+    body {
+      background-color: var(--bg-color);
+      color: var(--main-color);
+      font-family: Arial, sans-serif;
+      font-size: var(--font-size);
+      padding: var(--padding);
+    }
+
+    h1 {
+      color: var(--secondary-color);
+    }
+
+    /* 3️⃣ Using variables inside another selector */
+    button {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: var(--padding);
+      cursor: pointer;
+    }
+
+    /* 4️⃣ Local variable (only works inside .card) */
+    .card {
+      --main-color: green; /* overrides only inside this element */
+      border: 2px solid var(--main-color);
+      padding: var(--padding);
+      margin-top: 20px;
+    }
+
+    /* 5️⃣ Using fallback value */
+    .fallback {
+      color: var(--undefined-var, red); /* uses red because variable not defined */
+    }
+
+    /* 6️⃣ Changing variable dynamically (hover example) */
+    button:hover {
+      --main-color: darkblue;
+      background-color: var(--main-color);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎨 CSS Variables – All Basics in One Template</h1>
+
+  <p>This page demonstrates <strong>global</strong> and <strong>local</strong> CSS variables, fallbacks, and overrides.</p>
+
+  <button>Hover Me</button>
+
+  <div class="card">
+    <p>This card uses a <strong>local variable</strong> for <code>--main-color</code> (green).</p>
+  </div>
+
+  <p class="fallback">This text uses a variable that doesn’t exist, so it falls back to red.</p>
+
+</body>
+</html>

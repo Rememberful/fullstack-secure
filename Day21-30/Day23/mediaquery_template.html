@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📱 CSS Media Queries – Complete & Simple Example</title>
+
+<style>
+/* 🎨 Base Styles — Default for all devices */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px;
+  background-color: white;
+  color: #222;
+  transition: all 0.4s ease;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.box {
+  background-color: steelblue;
+  color: white;
+  width: 300px;
+  height: 200px;
+  line-height: 200px;
+  margin: 20px auto;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* 🖥️ 1️⃣ For Large Screens (Desktops) */
+@media (min-width: 901px) {
+  body {
+    background-color: #f0f8ff;
+  }
+  .box {
+    background-color: steelblue;
+    width: 300px;
+  }
+}
+
+/* 💻 2️⃣ For Medium Screens (Tablets) */
+@media (min-width: 601px) and (max-width: 900px) {
+  body {
+    background-color: #fff3cd;
+  }
+  .box {
+    background-color: orange;
+    width: 220px;
+    height: 160px;
+    line-height: 160px;
+  }
+}
+
+/* 📱 3️⃣ For Small Screens (Mobiles) */
+@media (max-width: 600px) {
+  body {
+    background-color: #d1f7d6;
+  }
+  .box {
+    background-color: seagreen;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 14px;
+  }
+}
+
+/* 🔄 4️⃣ Orientation Example (Landscape mode) */
+@media (orientation: landscape) {
+  body {
+    background-color: #cce5ff;
+  }
+  .box::after {
+    content: " (Landscape)";
+  }
+}
+
+/* 📜 5️⃣ Print Example (When page is printed) */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .box {
+    background: none;
+    color: black;
+    border: 2px solid black;
+  }
+}
+
+/* 🌙 6️⃣ Dark Mode Detection */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #eee;
+  }
+  .box {
+    background-color: #bb86fc;
+    color: black;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1>🎯 CSS Media Queries – Full Demo</h1>
+<p>Resize your browser window or change your system mode to see effects.</p>
+
+<div class="box">Responsive Box</div>
+
+</body>
+</html>
