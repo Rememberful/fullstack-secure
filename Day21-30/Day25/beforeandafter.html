@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>::before and ::after Example</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+}
+
+/* Example 1 — Add stars before and after heading */
+h2::before {
+  content: "★ ";
+  color: gold;
+}
+
+h2::after {
+  content: " ★";
+  color: gold;
+}
+
+/* Example 2 — Add label before paragraph */
+p::before {
+  content: "👉 ";
+  color: darkorange;
+}
+
+/* Example 3 — Decorative line after paragraph */
+p::after {
+  content: " — Thank you!";
+  color: seagreen;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<h1>::before and ::after Examples</h1>
+
+<h2>Welcome to My Page</h2>
+<p>This paragraph shows how ::before and ::after work.</p>
+
+</body>
+</html>

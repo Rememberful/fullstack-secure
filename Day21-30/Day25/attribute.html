@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic CSS Attribute Selectors</title>
+
+<style>
+/* 1️⃣ Select elements that have a "title" attribute */
+[title] {
+  color: blue;
+  text-decoration: underline;
+}
+
+/* 2️⃣ Select links that go to HTTPS websites */
+a[href^="https"] {
+  color: green;
+}
+
+/* 3️⃣ Select links that end with .pdf */
+a[href$=".pdf"] {
+  color: red;
+  font-weight: bold;
+}
+
+/* 4️⃣ Select elements whose class contains "btn" */
+[class*="btn"] {
+  background-color: orange;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* Just for spacing */
+p {
+  margin: 10px 0;
+}
+</style>
+</head>
+
+<body>
+<h1>🎯 CSS Attribute Selector Examples (Beginner Friendly)</h1>
+
+<p title="info">This paragraph has a <b>title</b> attribute.</p>
+
+<p><a href="https://example.com">HTTPS Link</a></p>
+<p><a href="document.pdf">PDF Link</a></p>
+
+<p><a href="#" class="btn-primary">Button Link</a></p>
+<p><a href="#" class="btn-danger">Another Button</a></p>
+
+</body>
+</html>

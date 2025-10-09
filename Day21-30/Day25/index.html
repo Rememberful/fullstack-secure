@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic CSS Selectors Example</title>
+
+<style>
+/* --- Basic Pseudo-Classes --- */
+
+/* Changes color when you hover over the link */
+a:hover {
+  color: red;
+}
+
+/* Button changes color when clicked */
+button:active {
+  background-color: green;
+}
+
+/* Input box shows blue border when focused */
+input:focus {
+  border: 2px solid blue;
+}
+
+/* --- Basic Pseudo-Elements --- */
+
+/* Adds text before the heading */
+h2::before {
+  content: "★ ";
+  color: gold;
+}
+
+/* Adds text after the heading */
+h2::after {
+  content: " ★";
+  color: gold;
+}
+
+/* Makes the first letter big and colored */
+p::first-letter {
+  font-size: 1.5em;
+  color: darkorange;
+}
+</style>
+</head>
+
+<body>
+<h1>CSS Pseudo-Classes & Pseudo-Elements (Basic)</h1>
+
+<h2>Example Heading</h2>
+
+<p>This is a simple paragraph to show how the first letter looks larger and colored.</p>
+
+<p>Here’s a <a href="#">hover link</a> example.</p>
+
+<button>Click Me</button>
+
+<br><br>
+<input type="text" placeholder="Click to focus">
+</body>
+</html>
