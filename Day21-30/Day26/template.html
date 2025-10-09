@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Grid Template</title>
+<style>
+  /* ===== Body ===== */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* ===== Grid Container ===== */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 3 columns with fr units */
+    grid-template-rows: 100px 100px;    /* 2 rows */
+    gap: 15px;                           /* Space between items */
+    padding: 20px;
+  }
+
+  /* ===== Grid Items ===== */
+  .grid-item {
+    background-color: #2196F3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 20px;
+  }
+
+  /* ===== Item Placement Example ===== */
+  .grid-item.special {
+    grid-column: 2 / 4;  /* spans from column 2 to 3 */
+    grid-row: 1 / 2;     /* first row */
+    background-color: #FF5722;
+  }
+
+  /* ===== Justify & Align Example ===== */
+  .grid-item.align {
+    justify-self: end;   /* horizontal alignment inside its cell */
+    align-self: start;   /* vertical alignment inside its cell */
+    background-color: #4CAF50;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px) {
+    .grid-container {
+      grid-template-columns: 1fr; /* Stack items on small screens */
+      grid-template-rows: auto;
+    }
+    .grid-item.special {
+      grid-column: auto; /* reset placement */
+      grid-row: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CSS Grid Template</h1>
+  <p>Basic grid with all important features</p>
+</header>
+
+<h2>Grid Layout</h2>
+
+<div class="grid-container">
+  <div class="grid-item">1</div>
+  <div class="grid-item special">2 (spans 2 columns)</div>
+  <div class="grid-item">3</div>
+  <div class="grid-item">4</div>
+  <div class="grid-item align">5 (aligned differently)</div>
+  <div class="grid-item">6</div>
+</div>
+
+<footer>
+  <p>Footer Section</p>
+</footer>
+
+</body>
+</html>
