@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Float & Clear – Complete Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  /* 🌟 Container with clearfix for best practice */
+  .container {
+    border: 2px solid #333;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 30px;
+  }
+
+  /* ✅ Classic float left and right */
+  .float-left {
+    float: left;
+    width: 150px;
+    height: 100px;
+    background: steelblue;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    margin-right: 15px; /* spacing for text */
+  }
+
+  .float-right {
+    float: right;
+    width: 150px;
+    height: 100px;
+    background: seagreen;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    margin-left: 15px; /* spacing for text */
+  }
+
+  /* 📝 Text wrapping example */
+  .text-wrap {
+    margin-top: 10px;
+  }
+
+  /* 🧹 Clear float example */
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  /* Multiple floated boxes */
+  .float-box {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    color: white;
+    margin: 10px;
+    text-align: center;
+    line-height: 100px;
+  }
+
+  /* Example of using clear on element */
+  .clear-both {
+    clear: both;
+    background: lightgray;
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>CSS Float & Clear – Practical Examples</h1>
+
+<!-- 1️⃣ Floating left & right with text wrapping -->
+<div class="container clearfix">
+  <div class="float-left">Float Left</div>
+  <div class="float-right">Float Right</div>
+  <p class="text-wrap">
+    This paragraph wraps around the floated boxes. Notice how the text flows naturally between the left and right floated elements. Using margin around floats improves readability.
+  </p>
+</div>
+
+<!-- 2️⃣ Multiple floated boxes -->
+<div class="container clearfix">
+  <div class="float-box">Box 1</div>
+  <div class="float-box">Box 2</div>
+  <div class="float-box">Box 3</div>
+  <div class="float-box">Box 4</div>
+  <div class="clear-both">This element clears all floats using <b>clear: both</b></div>
+</div>
+
+<!-- 3️⃣ Image float example -->
+<div class="container clearfix">
+  <img src="img.jpg" height="200px" width="200px" alt="Sample Image" style="float:left; margin-right:15px;">
+  <p>
+    Images can be floated to the left or right to allow text to wrap around them. This is the classic use of float in articles and blogs. Make sure to clear floats or use clearfix to prevent container collapse.
+  </p>
+</div>
+
+<!-- 4️⃣ Float with clearfix container (best practice) -->
+<div class="container clearfix">
+  <div class="float-left">Left Box</div>
+  <div class="float-left">Another Left Box</div>
+  <p>This container uses a <b>clearfix</b> to ensure it expands correctly around the floated boxes.</p>
+</div>
+
+</body>
+</html>
