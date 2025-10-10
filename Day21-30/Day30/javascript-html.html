@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Variables & Data Types - Basics</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0078d7;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-left: 4px solid #0078d7;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Variables & Data Types</h1>
+  <p>Open the browser console (press <strong>F12 → Console</strong>) to see the output.</p>
+
+  <script>
+    console.log("===== 🧠 VARIABLES IN JAVASCRIPT =====");
+
+    // ✅ Declaring variables
+    var oldWay = "I'm var (old way - avoid if possible)";
+    let name = "Aditya";      // modern and flexible
+    const birthYear = 2005;   // constant, cannot be changed
+
+    console.log("Using var:", oldWay);
+    console.log("Using let:", name);
+    console.log("Using const:", birthYear);
+
+    // ❌ Bad Practice Example
+    var a = 10;
+    var a = 20; // var allows re-declaration (can cause bugs)
+    console.log("Bad practice var re-declare:", a);
+
+    // ✅ Good Practice
+    let age = 20;
+    age = 21; // allowed
+    console.log("Good practice let reassigned:", age);
+
+    // ❌ Error Example
+    const pi = 3.1416;
+    // pi = 3.14; // ❌ Uncomment to see: TypeError (const cannot be reassigned)
+
+    console.log("===== 🧩 DATA TYPES IN JAVASCRIPT =====");
+
+    // 1️⃣ Primitive Types
+    let userName = "Aditya";           // String
+    let score = 95;                    // Number
+    let isOnline = true;               // Boolean
+    let country;                       // Undefined
+    let car = null;                    // Null
+    let uniqueID = Symbol("id");       // Symbol
+    let bigNumber = 12345678901234567890123n; // BigInt
+
+    // Display in console
+    console.log("String:", userName, "| typeof:", typeof userName);
+    console.log("Number:", score, "| typeof:", typeof score);
+    console.log("Boolean:", isOnline, "| typeof:", typeof isOnline);
+    console.log("Undefined:", country, "| typeof:", typeof country);
+    console.log("Null:", car, "| typeof:", typeof car); // typeof null = "object" (known bug)
+    console.log("Symbol:", uniqueID, "| typeof:", typeof uniqueID);
+    console.log("BigInt:", bigNumber, "| typeof:", typeof bigNumber);
+
+    // 2️⃣ Non-Primitive Types
+    let user = { name: "Aditya", age: 20 };  // Object
+    let fruits = ["apple", "banana", "mango"]; // Array
+    function greet() {
+      console.log("Hello from function!");
+    }
+
+    console.log("Object:", user, "| typeof:", typeof user);
+    console.log("Array:", fruits, "| typeof:", typeof fruits);
+    console.log("Function:", greet, "| typeof:", typeof greet);
+
+    // ✅ Example of Explicit Type Conversion
+    let numStr = "25";
+    let converted = Number(numStr); // Convert string → number
+    console.log("Converted Type:", converted, "| typeof:", typeof converted);
+
+    // ❌ Bad Practice - Implicit Conversion
+    console.log("'5' + 1 =", "5" + 1);   // string concatenation → "51"
+    console.log("'5' - 1 =", "5" - 1);   // numeric conversion → 4
+
+    // ✅ Good Practice - Always use explicit conversion
+    console.log("Number('5') + 1 =", Number("5") + 1);
+
+    console.log("===== ⚙️ SECURITY & BEST PRACTICES =====");
+    console.log("1️⃣ Use const for constants and let for changing values");
+    console.log("2️⃣ Avoid using var to prevent scope bugs");
+    console.log("3️⃣ Never trust user input data types (always validate)");
+    console.log("4️⃣ Use === for comparisons (strict equality)");
+    console.log("5️⃣ Avoid exposing sensitive data in client-side JS");
+
+    // Example of strict vs loose comparison
+    console.log("Loose equality 0 == false →", 0 == false);   // true 😬
+    console.log("Strict equality 0 === false →", 0 === false); // false ✅
+
+  </script>
+
+</body>
+</html>
