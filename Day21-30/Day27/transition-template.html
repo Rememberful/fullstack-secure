@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Transitions Basic</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .box {
+    width: 120px;
+    height: 120px;
+    background-color: #2196F3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out; /* core part */
+    cursor: pointer;
+  }
+
+  /* Change on hover */
+  .box:hover {
+    background-color: #E91E63;
+    width: 160px;
+    height: 160px;
+    transform: rotate(20deg);
+    border-radius: 50%;
+  }
+
+  /* Example: delayed transition */
+  .delay {
+    transition: all 0.5s ease 0.5s; /* 0.5s delay before animation starts */
+  }
+
+  /* Example: different timing functions */
+  .ease { transition-timing-function: ease; }
+  .linear { transition-timing-function: linear; }
+  .ease-in { transition-timing-function: ease-in; }
+  .ease-out { transition-timing-function: ease-out; }
+  .ease-in-out { transition-timing-function: ease-in-out; }
+
+</style>
+</head>
+<body>
+
+<div class="box ease">Ease</div>
+<div class="box linear">Linear</div>
+<div class="box ease-in">Ease-In</div>
+<div class="box ease-out">Ease-Out</div>
+<div class="box ease-in-out">Ease-In-Out</div>
+<div class="box delay">Delay</div>
+
+</body>
+</html>

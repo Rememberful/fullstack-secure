@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS 2D & 3D Transforms Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  /* ====== CONTAINER ====== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    width: 90%;
+    max-width: 900px;
+  }
+
+  /* ====== BOX STYLE ====== */
+  .box {
+    width: 150px;
+    height: 150px;
+    background-color: #2196F3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+  }
+
+  /* ====== 2D TRANSFORMS ====== */
+  .translate:hover { transform: translate(40px, 30px); }
+  .rotate:hover { transform: rotate(45deg); }
+  .scale:hover { transform: scale(1.4); }
+  .skew:hover { transform: skew(20deg, 10deg); }
+  .combo:hover { transform: translate(20px, 20px) rotate(30deg) scale(1.2); }
+
+  /* ====== 3D TRANSFORMS ====== */
+  .rotateX:hover { transform: rotateX(60deg); }
+  .rotateY:hover { transform: rotateY(60deg); }
+  .rotateZ:hover { transform: rotateZ(60deg); }
+  .perspective:hover {
+    transform: perspective(400px) rotateY(45deg);
+  }
+
+  /* ====== 3D FLIP CARD ====== */
+  .card {
+    width: 180px;
+    height: 180px;
+    perspective: 800px; /* Needed for 3D depth */
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+  }
+
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden; /* Hides back side when flipped */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  .card-front { background-color: #673AB7; }
+  .card-back {
+    background-color: #E91E63;
+    transform: rotateY(180deg);
+  }
+</style>
+</head>
+<body>
+
+<h1>✨ CSS 2D & 3D Transform Examples</h1>
+
+<div class="grid">
+  <div class="box translate">Translate</div>
+  <div class="box rotate">Rotate</div>
+  <div class="box scale">Scale</div>
+  <div class="box skew">Skew</div>
+  <div class="box combo">Combo</div>
+  <div class="box rotateX">RotateX</div>
+  <div class="box rotateY">RotateY</div>
+  <div class="box rotateZ">RotateZ</div>
+  <div class="box perspective">Perspective</div>
+</div>
+
+<h2>🃏 3D Flip Card Example</h2>
+<div class="card">
+  <div class="card-inner">
+    <div class="card-front">FRONT</div>
+    <div class="card-back">BACK</div>
+  </div>
+</div>
+
+</body>
+</html>
