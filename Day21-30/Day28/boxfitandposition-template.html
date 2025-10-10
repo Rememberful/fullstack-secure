@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Object-Fit & Object-Position Master Template</title>
+
+<style>
+  /* 🎨 Base Styling */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  p {
+    color: #fff;
+    margin-bottom: 40px;
+    font-size: 15px;
+    opacity: 0.9;
+    text-align: center;
+  }
+
+  /* 🖼️ Gallery Layout */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .card {
+    background: #ffffff22;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+  }
+
+  .card img {
+    width: 100%;
+    height: 200px;
+    display: block;
+  }
+
+  .label {
+    padding: 12px;
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(5px);
+  }
+
+  /* 🌈 Object-fit Variations */
+  .fill img { object-fit: fill; }
+  .contain img { object-fit: contain; background: #000; }
+  .cover img { object-fit: cover; }
+  .none img { object-fit: none; }
+  .scale-down img { object-fit: scale-down; }
+
+  /* 📍 Object-position Examples */
+  .cover-top img {
+    object-fit: cover;
+    object-position: top;
+  }
+  .cover-bottom img {
+    object-fit: cover;
+    object-position: bottom;
+  }
+  .cover-left img {
+    object-fit: cover;
+    object-position: left;
+  }
+  .cover-right img {
+    object-fit: cover;
+    object-position: right;
+  }
+  .cover-center img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>CSS Object-Fit & Object-Position</h1>
+<p>Explore how images behave inside containers using different <b>object-fit</b> and <b>object-position</b> values.</p>
+
+<!-- 🎯 Main Gallery -->
+<div class="gallery">
+
+  <div class="card fill">
+    <img src="https://picsum.photos/id/1015/600/400" alt="Image">
+    <div class="label">object-fit: fill</div>
+  </div>
+
+  <div class="card contain">
+    <img src="https://picsum.photos/id/1016/600/400" alt="Image">
+    <div class="label">object-fit: contain</div>
+  </div>
+
+  <div class="card cover">
+    <img src="https://picsum.photos/id/1020/600/400" alt="Image">
+    <div class="label">object-fit: cover</div>
+  </div>
+
+  <div class="card none">
+    <img src="https://picsum.photos/id/1024/600/400" alt="Image">
+    <div class="label">object-fit: none</div>
+  </div>
+
+  <div class="card scale-down">
+    <img src="https://picsum.photos/id/1032/600/400" alt="Image">
+    <div class="label">object-fit: scale-down</div>
+  </div>
+
+  <div class="card cover-top">
+    <img src="https://picsum.photos/id/1018/600/400" alt="Image">
+    <div class="label">cover + object-position: top</div>
+  </div>
+
+  <div class="card cover-bottom">
+    <img src="https://picsum.photos/id/1035/600/400" alt="Image">
+    <div class="label">cover + object-position: bottom</div>
+  </div>
+
+  <div class="card cover-left">
+    <img src="https://picsum.photos/id/1041/600/400" alt="Image">
+    <div class="label">cover + object-position: left</div>
+  </div>
+
+  <div class="card cover-right">
+    <img src="https://picsum.photos/id/1050/600/400" alt="Image">
+    <div class="label">cover + object-position: right</div>
+  </div>
+
+  <div class="card cover-center">
+    <img src="https://picsum.photos/id/1062/600/400" alt="Image">
+    <div class="label">cover + object-position: center</div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Filters Demo</title>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    margin: 0;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  p {
+    color: #555;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+  }
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: filter 0.4s ease;
+  }
+
+  .label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    padding: 6px 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* 🎨 Filter Examples */
+  .blur img { filter: blur(3px); }
+  .brightness img { filter: brightness(150%); }
+  .contrast img { filter: contrast(180%); }
+  .grayscale img { filter: grayscale(100%); }
+  .sepia img { filter: sepia(100%); }
+  .invert img { filter: invert(100%); }
+  .hue img { filter: hue-rotate(120deg); }
+  .saturate img { filter: saturate(250%); }
+  .shadow img { filter: drop-shadow(8px 8px 10px rgba(0,0,0,0.5)); }
+
+  /* 👆 Hover to remove filter */
+  .card:hover img {
+    filter: none;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>CSS Filter Effects</h1>
+<p>Hover over the images to see the original version!</p>
+
+<div class="gallery">
+  <div class="card blur">
+    <img src="https://picsum.photos/id/1015/600/400" alt="">
+    <div class="label">blur(3px)</div>
+  </div>
+  <div class="card brightness">
+    <img src="https://picsum.photos/id/1020/600/400" alt="">
+    <div class="label">brightness(150%)</div>
+  </div>
+  <div class="card contrast">
+    <img src="https://picsum.photos/id/1035/600/400" alt="">
+    <div class="label">contrast(180%)</div>
+  </div>
+  <div class="card grayscale">
+    <img src="https://picsum.photos/id/1041/600/400" alt="">
+    <div class="label">grayscale(100%)</div>
+  </div>
+  <div class="card sepia">
+    <img src="https://picsum.photos/id/1050/600/400" alt="">
+    <div class="label">sepia(100%)</div>
+  </div>
+  <div class="card invert">
+    <img src="https://picsum.photos/id/1060/600/400" alt="">
+    <div class="label">invert(100%)</div>
+  </div>
+  <div class="card hue">
+    <img src="https://picsum.photos/id/1069/600/400" alt="">
+    <div class="label">hue-rotate(120deg)</div>
+  </div>
+  <div class="card saturate">
+    <img src="https://picsum.photos/id/1080/600/400" alt="">
+    <div class="label">saturate(250%)</div>
+  </div>
+  <div class="card shadow">
+    <img src="https://picsum.photos/id/1084/600/400" alt="">
+    <div class="label">drop-shadow()</div>
+  </div>
+</div>
+
+</body>
+</html>
