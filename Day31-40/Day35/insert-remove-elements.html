@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Insert & Remove Example</title>
+  <style>
+    .myDiv { color: blue; margin: 10px 0; }
+    .dynamic-list { color: green; }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">DOM Manipulation Example</h1>
+  <button id="addBtn">Add Div</button>
+  <button id="removeBtn">Remove Div</button>
+  <button id="replaceBtn">Replace Paragraph</button>
+
+  <p id="para1">I am a paragraph</p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const addBtn = document.getElementById("addBtn");
+      const removeBtn = document.getElementById("removeBtn");
+      const replaceBtn = document.getElementById("replaceBtn");
+
+      // Add Div dynamically
+      addBtn.addEventListener("click", () => {
+        const newDiv = document.createElement("div");
+        newDiv.textContent = "This is a new div!";
+        newDiv.classList.add("myDiv");
+        document.body.appendChild(newDiv);
+      });
+
+      // Remove Div dynamically
+      removeBtn.addEventListener("click", () => {
+        const div = document.querySelector(".myDiv");
+        if(div) div.remove();
+      });
+
+      // Replace Paragraph
+      replaceBtn.addEventListener("click", () => {
+        const oldPara = document.getElementById("para1");
+        const newPara = document.createElement("p");
+        newPara.textContent = "Paragraph replaced!";
+        oldPara.parentNode.replaceChild(newPara, oldPara);
+      });
+
+      // Create list dynamically
+      const fruits = ["Apple", "Banana", "Mango"];
+      const ul = document.createElement("ul");
+      ul.classList.add("dynamic-list");
+      document.body.appendChild(ul);
+
+      fruits.forEach(fruit => {
+        const li = document.createElement("li");
+        li.textContent = fruit;
+        ul.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>

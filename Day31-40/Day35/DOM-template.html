@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Selectors Example</title>
+  <style>
+    .text { color: green; }
+    .highlight { color: blue; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">Welcome!</h1>
+  <p class="text">This is paragraph 1</p>
+  <p class="text">This is paragraph 2</p>
+  <button id="btn">Click Me</button>
+  <div class="container">
+    <span>Inside container</span>
+  </div>
+
+  <script>
+    // Wait for DOM to load
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // 1️⃣ By ID
+      const title = document.getElementById("main-title");
+      title.style.color = "red";
+
+      // 2️⃣ By Class
+      const paras = document.getElementsByClassName("text");
+      for (let p of paras) {
+        p.style.fontSize = "18px";
+      }
+
+      // 3️⃣ By Tag Name
+      const buttons = document.getElementsByTagName("button");
+      console.log("Buttons count:", buttons.length);
+
+      // 4️⃣ querySelector / querySelectorAll
+      const firstPara = document.querySelector(".text");
+      const allParas = document.querySelectorAll(".text");
+      allParas.forEach(p => p.classList.add("highlight"));
+
+      // 5️⃣ Nested Selection
+      const container = document.querySelector(".container");
+      const innerSpan = container.querySelector("span");
+      console.log("Inner span:", innerSpan.textContent);
+
+      // 6️⃣ Event Example
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("click", () => {
+        title.textContent = "Button Clicked!";
+        title.classList.toggle("highlight");
+      });
+    });
+  </script>
+</body>
+</html>
