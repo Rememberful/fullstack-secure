@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Basics Example</title>
+  <style>
+    .highlight { color: blue; font-weight: bold; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Hello, DOM!</h1>
+  <p class="info">JavaScript can change this text.</p>
+  <button id="changeBtn">Click Me</button>
+
+  <script>
+    // Wait for DOM to load
+    document.addEventListener("DOMContentLoaded", () => {
+      const title = document.getElementById("title");
+      const para = document.querySelector(".info");
+      const btn = document.querySelector("#changeBtn");
+
+      // Modify content
+      title.textContent = "DOM Manipulation in Action!";
+      para.style.color = "green";
+
+      // Add new element
+      const newDiv = document.createElement("div");
+      newDiv.textContent = "This div was added via JavaScript!";
+      document.body.appendChild(newDiv);
+
+      // Add button click event
+      btn.addEventListener("click", () => {
+        para.classList.toggle("highlight");
+        title.textContent = "Button Clicked!";
+      });
+    });
+  </script>
+</body>
+</html>
