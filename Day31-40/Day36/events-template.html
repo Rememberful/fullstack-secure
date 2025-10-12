@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Events & Timers Example</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    #parent { padding: 20px; background: #f2f2f2; }
+    #child { padding: 10px 20px; background: lightblue; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Events, Bubbling, and Timers</h1>
+
+  <div id="parent">
+    <button id="child">Click Me</button>
+  </div>
+
+  <button id="timeoutBtn">Start Timeout</button>
+  <button id="intervalBtn">Start Interval</button>
+  <button id="stopIntervalBtn">Stop Interval</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const parent = document.getElementById("parent");
+      const child = document.getElementById("child");
+      const timeoutBtn = document.getElementById("timeoutBtn");
+      const intervalBtn = document.getElementById("intervalBtn");
+      const stopIntervalBtn = document.getElementById("stopIntervalBtn");
+
+      // 1️⃣ Basic Event
+      child.addEventListener("click", (e) => {
+        console.log("Child clicked");
+      });
+
+      // 2️⃣ Event Bubbling
+      parent.addEventListener("click", () => {
+        console.log("Parent clicked (bubbling)");
+      });
+
+      // 3️⃣ Capturing Example
+      parent.addEventListener("click", () => {
+        console.log("Parent clicked (capturing)");
+      }, true);
+
+      // 4️⃣ setTimeout
+      timeoutBtn.addEventListener("click", () => {
+        console.log("Timer started...");
+        setTimeout(() => {
+          console.log("Timeout finished after 2s!");
+        }, 2000);
+      });
+
+      // 5️⃣ setInterval
+      let counter = 0;
+      let myInterval;
+      intervalBtn.addEventListener("click", () => {
+        console.log("Interval started...");
+        myInterval = setInterval(() => {
+          counter++;
+          console.log("Count:", counter);
+        }, 1000);
+      });
+
+      stopIntervalBtn.addEventListener("click", () => {
+        clearInterval(myInterval);
+        console.log("Interval stopped!");
+      });
+    });
+  </script>
+</body>
+</html>

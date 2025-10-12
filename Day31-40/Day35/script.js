@@ -7,7 +7,7 @@
 //Targetting by id
 // document.getElementById("2ndbox").style.backgroundColor = "yellow";
 
-//Query selector
+//Query selecto
 // document.querySelector(".box").style.backgroundColor = "skyblue";
 
 // Query Selector all
