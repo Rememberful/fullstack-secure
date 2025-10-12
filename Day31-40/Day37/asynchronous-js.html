@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Asynchronous Examples</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    button { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    .output { margin-top: 10px; padding: 10px; background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Asynchronous Examples</h1>
+
+  <button id="callbackBtn">Run Callback Example</button>
+  <button id="timeoutBtn">Run setTimeout Example</button>
+  <button id="intervalBtn">Run setInterval Example</button>
+  <button id="promiseBtn">Run Promise Example</button>
+  <button id="asyncBtn">Run Async/Await Example</button>
+  <div class="output" id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function log(message) {
+      console.log(message);
+      output.innerHTML += message + "<br>";
+    }
+
+    // ----------------------------
+    // 1️⃣ Callback Example
+    // ----------------------------
+    document.getElementById("callbackBtn").addEventListener("click", () => {
+      log("Callback Example:");
+      function greet(name, callback) {
+        log("Hello, " + name);
+        callback();
+      }
+
+      function sayBye() {
+        log("Goodbye!");
+      }
+
+      greet("Aditya", sayBye);
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 2️⃣ setTimeout Example
+    // ----------------------------
+    document.getElementById("timeoutBtn").addEventListener("click", () => {
+      log("setTimeout Example:");
+      log("Start Timeout...");
+      setTimeout(() => log("Timeout finished after 2s!"), 2000);
+      log("End Timeout...");
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 3️⃣ setInterval Example
+    // ----------------------------
+    let interval;
+    document.getElementById("intervalBtn").addEventListener("click", () => {
+      let count = 0;
+      log("setInterval Example:");
+      interval = setInterval(() => {
+        count++;
+        log("Interval count: " + count);
+        if (count === 5) {
+          clearInterval(interval);
+          log("Interval stopped after 5 counts");
+          log("----------------------------");
+        }
+      }, 1000);
+    });
+
+    // ----------------------------
+    // 4️⃣ Promise Example
+    // ----------------------------
+    document.getElementById("promiseBtn").addEventListener("click", () => {
+      log("Promise Example:");
+
+      function fetchData(success = true) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (success) resolve("Promise resolved: Data fetched!");
+            else reject("Promise rejected: Error fetching data!");
+          }, 2000);
+        });
+      }
+
+      fetchData()
+        .then(msg => log(msg))
+        .catch(err => log(err))
+        .finally(() => log("Promise operation completed"));
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 5️⃣ Async/Await Example
+    // ----------------------------
+    document.getElementById("asyncBtn").addEventListener("click", async () => {
+      log("Async/Await Example:");
+
+      function asyncFetchData() {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve("Async/Await Data fetched!"), 2000);
+        });
+      }
+
+      async function fetchDataAsync() {
+        log("Fetching data...");
+        const data = await asyncFetchData();
+        log(data);
+        log("Async/Await operation completed");
+      }
+
+      fetchDataAsync();
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 6️⃣ Event Loop Demonstration
+    // ----------------------------
+    log("Event Loop Demonstration:");
+    log("Start");
+
+    setTimeout(() => log("Timeout executed after 0ms"), 0);
+
+    Promise.resolve().then(() => log("Promise resolved immediately"));
+
+    log("End of synchronous code");
+    log("----------------------------");
+  </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Callback Examples</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    button { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    .output { margin-top: 10px; padding: 10px; background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Callback Function Examples</h1>
+
+  <button id="syncCallbackBtn">Synchronous Callback</button>
+  <button id="asyncCallbackBtn">Asynchronous Callback</button>
+  <button id="callbackParamsBtn">Callback with Parameters</button>
+  <button id="nestedCallbackBtn">Nested Callbacks</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function log(message) {
+      console.log(message);
+      output.innerHTML += message + "<br>";
+    }
+
+    // ----------------------------
+    // 1️⃣ Synchronous Callback
+    // ----------------------------
+    document.getElementById("syncCallbackBtn").addEventListener("click", () => {
+      log("Synchronous Callback Example:");
+
+      function greet(name, callback) {
+        log("Hello, " + name);
+        callback();
+      }
+
+      function sayBye() {
+        log("Goodbye!");
+      }
+
+      greet("Aditya", sayBye);
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 2️⃣ Asynchronous Callback
+    // ----------------------------
+    document.getElementById("asyncCallbackBtn").addEventListener("click", () => {
+      log("Asynchronous Callback Example:");
+
+      function fetchData(callback) {
+        log("Fetching data...");
+        setTimeout(() => {
+          log("Data fetched!");
+          callback();
+        }, 2000);
+      }
+
+      fetchData(() => log("Processing the data now..."));
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 3️⃣ Callback with Parameters
+    // ----------------------------
+    document.getElementById("callbackParamsBtn").addEventListener("click", () => {
+      log("Callback with Parameters Example:");
+
+      function multiply(a, b, callback) {
+        const result = a * b;
+        callback(result);
+      }
+
+      multiply(5, 3, function(res) {
+        log("Result is: " + res);
+      });
+
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 4️⃣ Nested Callbacks (Callback Hell)
+    // ----------------------------
+    document.getElementById("nestedCallbackBtn").addEventListener("click", () => {
+      log("Nested Callback Example (Callback Hell):");
+
+      function step1(callback) {
+        setTimeout(() => {
+          log("Step 1 completed");
+          callback();
+        }, 1000);
+      }
+
+      function step2(callback) {
+        setTimeout(() => {
+          log("Step 2 completed");
+          callback();
+        }, 1000);
+      }
+
+      function step3(callback) {
+        setTimeout(() => {
+          log("Step 3 completed");
+          callback();
+        }, 1000);
+      }
+
+      step1(() => {
+        step2(() => {
+          step3(() => {
+            log("All steps done!");
+          });
+        });
+      });
+
+      log("----------------------------");
+    });
+
+  </script>
+</body>
+</html>
