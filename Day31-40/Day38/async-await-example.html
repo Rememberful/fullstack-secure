@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async/Await Examples</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    button { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    .output { margin-top: 10px; padding: 10px; background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>Async/Await Examples</h1>
+
+  <button id="simpleAsyncBtn">Simple Async Function</button>
+  <button id="awaitPromiseBtn">Await Promise Example</button>
+  <button id="errorHandlingBtn">Async/Await with Error Handling</button>
+  <button id="multipleAsyncBtn">Multiple Async Calls</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function log(message) {
+      console.log(message);
+      output.innerHTML += message + "<br>";
+    }
+
+    // ----------------------------
+    // 1️⃣ Simple Async Function
+    // ----------------------------
+    document.getElementById("simpleAsyncBtn").addEventListener("click", async () => {
+      log("Simple Async Function Example:");
+      async function greet() {
+        return "Hello from async function!";
+      }
+
+      const message = await greet(); // await is optional here
+      log(message);
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 2️⃣ Awaiting a Promise
+    // ----------------------------
+    document.getElementById("awaitPromiseBtn").addEventListener("click", async () => {
+      log("Await Promise Example:");
+
+      function fetchData() {
+        return new Promise(resolve => {
+          setTimeout(() => resolve("Data fetched after 2 seconds"), 2000);
+        });
+      }
+
+      log("Start fetching...");
+      const data = await fetchData();
+      log(data);
+      log("Fetching complete");
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 3️⃣ Async/Await with Error Handling
+    // ----------------------------
+    document.getElementById("errorHandlingBtn").addEventListener("click", async () => {
+      log("Async/Await with Error Handling Example:");
+
+      function fetchDataWithError(success = true) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (success) resolve("Data fetched successfully!");
+            else reject("Error: Unable to fetch data");
+          }, 2000);
+        });
+      }
+
+      try {
+        const data = await fetchDataWithError(false); // simulate failure
+        log(data);
+      } catch (error) {
+        log("Caught error: " + error);
+      } finally {
+        log("Process finished");
+      }
+
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 4️⃣ Multiple Async Calls Sequentially
+    // ----------------------------
+    document.getElementById("multipleAsyncBtn").addEventListener("click", async () => {
+      log("Multiple Async Calls Example:");
+
+      function step1() {
+        return new Promise(resolve => setTimeout(() => resolve("Step 1 done"), 1000));
+      }
+
+      function step2() {
+        return new Promise(resolve => setTimeout(() => resolve("Step 2 done"), 1000));
+      }
+
+      function step3() {
+        return new Promise(resolve => setTimeout(() => resolve("Step 3 done"), 1000));
+      }
+
+      const result1 = await step1();
+      log(result1);
+
+      const result2 = await step2();
+      log(result2);
+
+      const result3 = await step3();
+      log(result3);
+
+      log("All steps completed!");
+      log("----------------------------");
+    });
+  </script>
+</body>
+</html>
