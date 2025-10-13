@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try Catch & Error Handling Example</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f9f9f9; }
+    h1 { color: #333; }
+    button { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    .output { margin-top: 15px; padding: 10px; background: #eee; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Try–Catch–Finally Examples</h1>
+
+  <button id="basicTryBtn">Basic Try–Catch</button>
+  <button id="customErrorBtn">Throw Custom Error</button>
+  <button id="finallyBtn">Try–Catch–Finally</button>
+  <button id="asyncErrorBtn">Error in Async Function</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function log(message) {
+      console.log(message);
+      output.innerHTML += message + "<br>";
+    }
+
+    // ----------------------------
+    // 1️⃣ Basic Try–Catch Example
+    // ----------------------------
+    document.getElementById("basicTryBtn").addEventListener("click", () => {
+      log("🟢 Basic Try–Catch Example:");
+
+      try {
+        let x = 10;
+        log("Before error");
+        console.log(y); // ❌ y is not defined → Error
+      } 
+      catch (error) {
+        log("⚠️ Error caught: " + error.message);
+      }
+
+      log("After try–catch block");
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 2️⃣ Throwing Custom Error
+    // ----------------------------
+    document.getElementById("customErrorBtn").addEventListener("click", () => {
+      log("🟢 Custom Error Example:");
+
+      try {
+        let age = 15;
+        if (age < 18) {
+          throw new Error("Age must be 18 or above!");
+        }
+        log("Access granted");
+      } 
+      catch (error) {
+        log("⚠️ Error caught: " + error.message);
+      }
+
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 3️⃣ Try–Catch–Finally Example
+    // ----------------------------
+    document.getElementById("finallyBtn").addEventListener("click", () => {
+      log("🟢 Try–Catch–Finally Example:");
+
+      try {
+        log("Start of try block");
+        let num = 5;
+        if (num > 3) throw new Error("Number is too big!");
+        log("This line won't execute");
+      } 
+      catch (error) {
+        log("⚠️ Caught error: " + error.message);
+      } 
+      finally {
+        log("✅ Finally block runs always (error or not)");
+      }
+
+      log("After try–catch–finally");
+      log("----------------------------");
+    });
+
+    // ----------------------------
+    // 4️⃣ Error Handling in Async Code
+    // ----------------------------
+    document.getElementById("asyncErrorBtn").addEventListener("click", async () => {
+      log("🟢 Async Error Handling Example:");
+
+      async function fetchData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => reject("Network request failed!"), 2000);
+        });
+      }
+
+      try {
+        const data = await fetchData();
+        log(data);
+      } 
+      catch (error) {
+        log("⚠️ Async error caught: " + error);
+      } 
+      finally {
+        log("✅ Cleanup finished");
+      }
+
+      log("----------------------------");
+    });
+  </script>
+</body>
+</html>

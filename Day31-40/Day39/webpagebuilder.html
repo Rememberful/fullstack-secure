@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            display: flex;
+            border: 2px solid black;
+            justify-content: center;
+            align-items: center;
+            height: 301px;
+            width: 1010px;
+        }
+
+        /* ✅ Fix: scope styles to .text elements only */
+        .text h1,
+        .text p {
+            padding: 33px 22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="image">
+                <img src="https://wallpapercave.com/wp/wc1802079.jpg" alt="" height="300px" width="400px">
+            </div>
+            <div class="text">
+                <h1>Hey Aditya! Hope you are doing well, make sure to eat today!</h1>
+                <p>Institute of Engineering and Management • 727K students • 2 months ago</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ script should be loaded at the end of the body -->
+    <script src="script.js"></script>
+</body>
+</html>
